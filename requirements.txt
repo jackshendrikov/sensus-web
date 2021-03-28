@@ -6,6 +6,7 @@ gunicorn==19.6.0
 h5py>=2.7.1
 html5lib>=1.0.1
 numpy==1.19.5
+python-decouple~=3.4
 pymorphy2-dicts-uk==2.4.1.1.1460299261
 pymorphy2==0.9.1
 tensorflow>=2.1.0

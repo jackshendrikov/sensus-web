@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import tensorflow as tf
+import gensim.models.keyedvectors as word2vec
+
 from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -118,8 +121,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+WordVec = word2vec.KeyedVectors.load_word2vec_format('model/model-word2vec-300d.txt', binary=False)
+graph = tf.compat.v1.get_default_graph()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
+STATICFILES_DIRS = (
+    'static',
+    'model',
+    os.path.join(BASE_DIR, 'static'),
+)
