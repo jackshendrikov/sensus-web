@@ -15,7 +15,7 @@ class Sentence(models.Model):
         super().__init__(*args, **kwargs)
         self.sent = sent
 
-    STOP_WORDS = set(line.strip() for line in open('../model/stopwords_ua.txt', mode="r", encoding="utf-8"))
+    STOP_WORDS = set(line.strip() for line in open('model/stopwords_ua.txt', mode="r", encoding="utf-8"))
     MORPH = pymorphy2.MorphAnalyzer(lang='uk')
     MAX_SEQ_LEN = 100
 
@@ -31,19 +31,16 @@ class Sentence(models.Model):
     def lemmatize_words(morph, words):
         return [morph.parse(word)[0].normal_form for word in words]
 
-    @staticmethod
-    def irr_words_elimination(words):
-        while True:
-            ready = True
+    def irr_words_elimination(self, words):
+        words_list = self.regex_tokenizer(words)
+        words_list = [item.lower() for item in words_list]
+        print(words_list)
 
-            for word in words:
-                if bool(match(r"[a-zA-Z]", word)) or word.isdigit() or len(word) <= 3:
-                    ready = False
-                    words.remove(word)
-
-            if ready: break
-
-        return words
+        for word in words_list:
+            if bool(match(r"[a-zA-Z]", word)) or word.isdigit() or len(word) <= 3:
+                words_list.remove(word)
+        print(words_list)
+        return words_list
 
     def data_preparation(self):
         words_list = self.regex_tokenizer(self.sent)
@@ -77,10 +74,12 @@ class Sentence(models.Model):
 
     def prediction(self):
         data = self.data_preparation()
+        print(data)
         data = self.sent_embed(data)
         data = self.fix_sentence_len(data, self.MAX_SEQ_LEN)
         data = np.reshape(data, (1, 100, 300))
 
         with graph.as_default():
             model = load_model("model/LSTM-CNN-MODEL.h5")  # load model
+            print(model.predict(np.array(data)))
             return model.predict(np.array(data))
