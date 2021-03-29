@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="jackeshen" content="775afek6d4y9i1057f1b784a678e9785">
+    <meta name="jackshen-code" content="72157683219778">
+
+    <title>Login Form</title>
+
+    <link rel="icon" href="{% static 'home/ico/logo.ico' %}" type="image/x-icon">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css'>
+    <link rel="stylesheet"  href="{% static 'home/css/style.css' %}">
+
+{% block head %} {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+{% if form.errors %}
+    <script>
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+            }, 4000);
+    </script>
+
+    <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong>Your username and password didn't match.</strong> Please try again.
+    </div>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+      <div class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Your account doesn't have access to this page.</strong>
+          To proceed, please login with an account that has access.
+      </div>
+  {% else %}
+      <div class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <strong>Please login to see this site.</strong>
+      </div>
+  {% endif %}
+{% endif %}
+
+<div class="content">
+    <h2>Login</h2>
+    <form id="myform" method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="field">
+            <span class="fas fa-user"></span>
+            {{ form.username }}
+            <label>Username</label>
+        </div>
+        <div class="field" style="margin: 10px 0;">
+            <span class="fas fa-lock"></span>
+            {{ form.password }}
+            <label>Password</label>
+        </div>
+        <div class="forgot-pass"><a href="{% url 'password_reset' %}" id="lost">Lost password?</a></div>
+        <button class="submit-btn" onclick="document.getElementById('myform').submit()">
+            Login Locally
+            <input type="hidden" name="next" value="{{ next }}" />
+        </button>
+</form>
+</div>
+
+<script src='{% static "home/js/font-awesome-kit.js" %}'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+{% endblock %}
+

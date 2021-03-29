@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-import tensorflow as tf
-import gensim.models.keyedvectors as word2vec
+# import tensorflow as tf
+# import gensim.models.keyedvectors as word2vec
 
 from decouple import config, Csv
 
@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # Used for a default title
-APP_NAME = 'Sentimento Web'
+APP_NAME = 'SENTIMENTO WEB'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
@@ -33,6 +33,13 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+
+ALLOW_FILE_ATTACHMENTS = True
+ALLOWED_FILE_ATTACHMENTS = [".txt", ".pdf"]
+TODO_MAXIMUM_ATTACHMENT_SIZE = 5000000  # In bytes
+
+# Without this, uploaded files > 4MB end up with perm 0600, unreadable by web server process
+FILE_UPLOAD_PERMISSIONS = 0o644
 
 SITE_ID = 1
 
@@ -47,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'analyzer.apps.AnalyzerConfig',
+    'authz.apps.AuthzConfig',
+    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
@@ -123,8 +132,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-WordVec = word2vec.KeyedVectors.load_word2vec_format('model/model-word2vec-300d.txt', binary=False)
-graph = tf.compat.v1.get_default_graph()
+# WordVec = word2vec.KeyedVectors.load_word2vec_format('model/model-word2vec-300d.txt', binary=False)
+# graph = tf.compat.v1.get_default_graph()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
@@ -141,3 +150,31 @@ STATICFILES_DIRS = (
     'model',
     os.path.join(BASE_DIR, 'static'),
 )
+
+AUTHENTICATION_BACKENDS = (
+    # 'social_core.backends.github.GithubOAuth2',
+    # 'social_core.backends.twitter.TwitterOAuth',
+    # 'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+LOGOUT_REDIRECT_URL = '/home/'
+LOGIN_REDIRECT_URL = '/home/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
