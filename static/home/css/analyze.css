@@ -646,3 +646,13 @@ button, a { cursor: pointer; }
     color: #000;
 }
 
+.alert {
+    width: 50%;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 15px;
+    box-shadow: 2px 2px 5px var(--card-shadow2),
+               -3px -3px 5px var(--card-shadow);
+}
