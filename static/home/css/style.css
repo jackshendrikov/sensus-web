@@ -18,12 +18,12 @@ body{
   display: grid;
   place-items: center;
   text-align: center;
-  background: #dde1e7;
+  background: #f3f6fd;
 }
 
 .content{
   width: 450px;
-  background: #dde1e7;
+  background: #edf0f7;
   border-radius: 10px;
   padding: 40px 60px;
   box-shadow: -3px -3px 7px #ffffff73,
@@ -52,7 +52,7 @@ body{
   outline: none;
   border: none;
   color: #595959;
-  background: #dde1e7;
+  background: #edf0f7;
   border-radius: 25px;
   box-shadow: inset 2px 2px 5px #babecc,
               inset -5px -5px 10px #ffffff73;
@@ -116,7 +116,7 @@ body{
   color: #000;
   font-size: 18px;
   font-weight: 600;
-  background: #dde1e7;
+  background: #edf0f7;
   border: none;
   outline: none;
   cursor: pointer;
@@ -136,7 +136,7 @@ body{
   margin: auto;
   position: relative;
   text-align: center;
-  background-color: #dde1e7;
+  background-color: #edf0f7;
   color: #141e30;
   font-size: 1.7rem;
   border-radius: 15px;

@@ -6,4 +6,29 @@ document.addEventListener('DOMContentLoaded', function () {
     modeSwitch.classList.toggle('active');
   });
 
+  let listView = document.querySelector('.list-view');
+  let gridView = document.querySelector('.grid-view');
+  let projectsList = document.querySelector('.project-boxes');
+
+  listView.addEventListener('click', function () {
+    gridView.classList.remove('active');
+    listView.classList.add('active');
+    projectsList.classList.remove('jsGridView');
+    projectsList.classList.add('jsListView');
+  });
+
+  gridView.addEventListener('click', function () {
+    gridView.classList.add('active');
+    listView.classList.remove('active');
+    projectsList.classList.remove('jsListView');
+    projectsList.classList.add('jsGridView');
+  });
+
+  document.querySelector('.messages-btn').addEventListener('click', function () {
+    document.querySelector('.messages-section').classList.add('show');
+  });
+
+  document.querySelector('.messages-close').addEventListener('click', function() {
+    document.querySelector('.messages-section').classList.remove('show');
+  });
 });
