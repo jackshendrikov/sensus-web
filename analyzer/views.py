@@ -6,7 +6,12 @@ from analyzer.forms import DocumentForm
 
 
 def home(request):
-    return render(request, 'analyzer/home.html')
+    # Load documents for the list page
+    documents = Document.objects.all()
+
+    # Render list page with the documents and the form
+    context = {'documents': documents}
+    return render(request, 'analyzer/home.html', context)
 
 
 def upload(request):
@@ -19,7 +24,7 @@ def upload(request):
             messages.success(request, "Your data has been saved!")
 
             # Redirect to the document list after POST
-            return redirect('my-view')
+            return redirect('upload')
         else:
             messages.error(request, "Error! Try one more time...")
     else:

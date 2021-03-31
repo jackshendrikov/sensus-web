@@ -7,6 +7,8 @@
     <meta charset="UTF-8">
     <title>Management Page</title>
     <link rel="icon" href="{% static 'home/ico/logo.ico' %}" type="image/x-icon">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet"  href="{% static 'home/css/analyze.css' %}">
 </head>
@@ -100,7 +102,7 @@
             <div class="projects-section-line">
                 <div class="projects-status">
                     <div class="item-status">
-                        <span class="status-number">62</span>
+                        <span class="status-number">{{ documents|length }}</span>
                         <span class="status-type">Total Docs</span>
                     </div>
                 </div>
@@ -129,9 +131,12 @@
             </div>
 
             <div class="project-boxes jsGridView">
+                {% if documents %}
+                {% for document in documents %}
+<!--                        <li><a href="{{ document.docfile.url }}">{{ document.docfile.name }}</a></li>-->
                 <div class="project-box-wrapper">
-                    <div class="project-box" style="background-color: #fee4cb;">
-                        <div class="project-box-header">
+                    <div class="project-box" style="background-color: #a0e989;">
+                        <div class="project-box-header" style="margin: 0;">
                             <div class="more-wrapper">
                                 <button class="project-btn-more">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
@@ -143,83 +148,25 @@
                         </div>
 
                         <div class="project-box-content-header">
-                            <p class="box-content-header">Smth 1</p>
-                            <p class="box-content-subheader">Sub smth 1</p>
+                            <p class="box-content-header">Document #{{ document.id|stringformat:"s" }}</p>
+                            <p class="box-content-subheader">{{ document.docfile.name }}</p>
                         </div>
 
                         <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 60%; background-color: #ff942e"></span>
-                            </div>
-                            <p class="box-progress-percentage">60%</p>
+                           <form method="get" style="text-align: center;" action="{{ document.docfile.url }}">
+                               <button type="submit" class="btn btn-success" style="width: 250px;">Download &nbsp;<i class="fa fa-download"></i></button>
+                           </form>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-box-wrapper">
-                    <div class="project-box" style="background-color: #e9e7fd;">
-                        <div class="project-box-header">
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1" />
-                                        <circle cx="12" cy="5" r="1" />
-                                        <circle cx="12" cy="19" r="1" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">Smth 2</p>
-                            <p class="box-content-subheader">Sub smth 2</p>
-                        </div>
-
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 50%; background-color: #4f3ff0"></span>
-                            </div>
-                            <p class="box-progress-percentage">50%</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-box-wrapper">
-                    <div class="project-box">
-                        <div class="project-box-header">
-                            <div class="more-wrapper">
-                                <button class="project-btn-more">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
-                                        <circle cx="12" cy="12" r="1" />
-                                        <circle cx="12" cy="5" r="1" />
-                                        <circle cx="12" cy="19" r="1" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="project-box-content-header">
-                            <p class="box-content-header">Smth 3</p>
-                            <p class="box-content-subheader">Sub smth 3</p>
-                        </div>
-
-                        <div class="box-progress-wrapper">
-                            <p class="box-progress-header">Progress</p>
-                            <div class="box-progress-bar">
-                                <span class="box-progress" style="width: 80%; background-color: #096c86"></span>
-                            </div>
-                            <p class="box-progress-percentage">80%</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                {% else %}
+                <p style="text-align: center;">No documents.</p>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
-
-<span class="footer-title">JackShen Engeneering, {% now "Y" %}</span>
 
 <script src='{% static "home/js/analyzer.js" %}'></script>
 

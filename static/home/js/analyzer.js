@@ -23,13 +23,4 @@ document.addEventListener('DOMContentLoaded', function () {
     projectsList.classList.remove('jsListView');
     projectsList.classList.add('jsGridView');
   });
-
-  document.querySelector('.messages-btn').addEventListener('click', function () {
-    document.querySelector('.messages-section').classList.add('show');
-  });
-
-  document.querySelector('.messages-close').addEventListener('click', function() {
-    document.querySelector('.messages-section').classList.remove('show');
-  });
 });
-
