@@ -56,7 +56,6 @@ INSTALLED_APPS = [
 
     'analyzer.apps.AnalyzerConfig',
     'authz.apps.AuthzConfig',
-    'home.apps.HomeConfig',
 ]
 
 MIDDLEWARE = [
