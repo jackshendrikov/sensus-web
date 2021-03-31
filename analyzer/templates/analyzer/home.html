@@ -15,8 +15,12 @@
 <div class="app-container">
     <div class="app-header">
         <div class="app-header-left">
-            <span class="app-icon"></span>
-            <p class="app-name">Sentimento Web</p>
+            <span class="app-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                </svg>
+            </span>
+            <p class="app-name" style="margin: 0 32px 0 20px;">Sentimento Web</p>
             <div class="search-wrapper">
                 <input class="search-input" type="text" placeholder="Search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search" viewBox="0 0 24 24">
@@ -35,7 +39,7 @@
                 </svg>
             </button>
 
-            <button class="add-btn" title="Add New File">
+            <button class="add-btn" title="Add New File" onclick="window.location.href='{% url "upload" %}'">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="btn-icon feather feather-plus">
                     <line x1="12" y1="5" x2="12" y2="19" />
                     <line x1="5" y1="12" x2="19" y2="12" />
@@ -97,7 +101,7 @@
                 <div class="projects-status">
                     <div class="item-status">
                         <span class="status-number">62</span>
-                        <span class="status-type">Total Projects</span>
+                        <span class="status-type">Total Docs</span>
                     </div>
                 </div>
 
@@ -223,7 +227,7 @@
 </html>
 
 
-<!--{% extends "analyzer/header.html" %}-->
+
 
 <!--{% block content %}-->
 

@@ -94,34 +94,22 @@ button, a { cursor: pointer; }
 .app-header-right button { margin-left: 10px; }
 
 .app-icon {
-    width: 26px;
-    height: 2px;
-    border-radius: 4px;
-    background-color: var(--main-color);
-    position: relative;
+    color: var(--link-color);
+    transition: 0.2s;
+    border-radius: 50%;
+    flex-shrink: 0;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.app-icon:before, .app-icon:after {
-    content: "";
-    position: absolute;
-    width: 12px;
-    height: 2px;
-    border-radius: 4px;
-    background-color: var(--main-color);
-    left: 50%;
-    transform: translatex(-50%);
-}
-
-.app-icon:before { top: -6px; }
-
-.app-icon:after { bottom: -6px; }
 
 .app-name {
     color: var(--main-color);
     font-size: 20px;
     line-height: 24px;
     font-weight: 700;
-    margin: 0 32px;
+    margin: 0 20px;
 }
 
 .mode-switch {

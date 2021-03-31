@@ -9,7 +9,7 @@ def home(request):
     return render(request, 'analyzer/home.html')
 
 
-def my_view(request):
+def upload(request):
     # Handle file upload
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
@@ -30,7 +30,7 @@ def my_view(request):
 
     # Render list page with the documents and the form
     context = {'documents': documents, 'form': form}
-    return render(request, 'analyzer/list.html', context)
+    return render(request, 'analyzer/upload.html', context)
 
 
 def prediction(request):
