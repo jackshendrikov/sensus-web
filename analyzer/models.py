@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 from django.db import models
 from re import match
 from nltk.tokenize import RegexpTokenizer
@@ -8,6 +11,12 @@ from tensorflow.keras.models import load_model
 import pymorphy2
 import numpy as np
 
+class Document(models.Model):
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')
+
+    def delete(self, *args, **kwargs):
+        os.remove(os.path.join(settings.MEDIA_ROOT, self.docfile.name))
+        super(Document, self).delete(*args, **kwargs)
 
 class Sentence(models.Model):
 
