@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
-# import tensorflow as tf
-# import gensim.models.keyedvectors as word2vec
+import tensorflow as tf
+import gensim.models.keyedvectors as word2vec
 
 from decouple import config, Csv
 
@@ -133,8 +133,8 @@ USE_L10N = True
 
 USE_TZ = True
 
-# WordVec = word2vec.KeyedVectors.load_word2vec_format('model/model-word2vec-300d.txt', binary=False)
-# graph = tf.compat.v1.get_default_graph()
+WordVec = word2vec.KeyedVectors.load_word2vec_format('model/model-word2vec-300d.txt', binary=False)
+graph = tf.compat.v1.get_default_graph()
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/

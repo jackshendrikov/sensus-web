@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Sentiment Prediction</title>
+    <link rel="icon" href="{% static 'home/ico/logo.ico' %}" type="image/x-icon">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="{% static 'home/css/predict.css' %}">
+</head>
+<body>
+
+<div class="well" style="background: #fff;">
+    <h2 style="font-weight: bold;">Model Prediction</h2>
+    <hr>
+    <div class="row">
+        {% if prediction == None %}
+        <div id="prediction" data-dimension="200" data-text="0%" data-fontsize="36" data-percent="0" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="20" data-bordersize="20" data-animationstep="2"></div>
+        {% else %}
+            {% if prediction < 50 %}
+        <div id="prediction" data-dimension="200" data-text="{{ prediction }}%" data-fontsize="36" data-percent="{{ prediction }}" data-fgcolor="#ff4c4c" data-bgcolor="#eee" data-width="20" data-bordersize="20" data-animationstep="2"></div>
+            {% else %}
+        <div id="prediction" data-dimension="200" data-text="{{ prediction }}%" data-fontsize="36" data-percent="{{ prediction }}" data-fgcolor="#30B455" data-bgcolor="#eee" data-width="20" data-bordersize="20" data-animationstep="2"></div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <br>
+    <a class="btn btn-default" href="{% url 'home_page' %}" target="_self">
+        Return to Home Page <i class="glyphicon glyphicon-new-window"></i>
+    </a>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script  src='{% static "home/js/predict.js" %}'></script>
+
+</body>
+</html>

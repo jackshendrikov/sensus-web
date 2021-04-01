@@ -43,6 +43,9 @@ def prediction(request):
     sent = Sentence(str(text))
     predict = sent.prediction()
 
-    print("Prediction is :", float(predict))
+    print(str(text))
 
-    return render(request, 'analyzer/home.html', {'prediction':  round(float(predict), 2) * 100})
+    print("Prediction is :", float(predict))
+    context = {'prediction':  round(float(predict), 2) * 100, 'sent': sent}
+
+    return render(request, 'analyzer/predict.html', context)

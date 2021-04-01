@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    max-width: 400px;
+    margin: 1em auto;
+    background: #f3f6fd;
+    text-align: center;
+}
+
+.well {
+    position: absolute;
+    width: 350px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+       -moz-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+    box-shadow: -3px -3px 7px #ffffff73,
+                  2px 2px 5px rgba(94, 104, 121, 0.288);
+}
+
+.circliful {
+    margin:auto;
+    position: relative;
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+	color: #999;
+}
+
+.circliful .fa {
+	margin: -10px 3px 0 3px;
+	position: relative;
+	bottom: 4px;
+}
+
+.btn-default{
+    width: 80%;
+    margin: 15px 0;
+    padding: 10px;
+    color: #000;
+    font-size: 18px;
+    font-weight: 600;
+    background: #edf0f7;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px #babecc,
+               -5px -5px 10px #ffffff73;
+}
+
+.btn-default:focus{
+    color: #e1e7f0;
+    box-shadow: inset 2px 2px 5px #babecc,
+                inset -5px -5px 10px #ffffff73;
+}
