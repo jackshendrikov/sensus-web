@@ -29,7 +29,7 @@ This site was designed for sentiment analysis of text documents on Ukrainian lan
 
 Login Page         |  Upload Page (Light Theme) |  Upload Page (Dark Theme)
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src="img/login.png" title="Login Page" width="100%"> |<img src="img/upload_light" title="Upload Page (Light Theme)" width="100%"> |<img src="img/upload_dark.png" title="Upload Page (Dark Theme)" width="100%">
+<img src="img/login.png" title="Login Page" width="100%"> |<img src="img/upload_light.png" title="Upload Page (Light Theme)" width="100%"> |<img src="img/upload_dark.png" title="Upload Page (Dark Theme)" width="100%">
 
 Admin Page (Light Theme)         |  Admin Page (Dark Theme)   |  Predict Page
 :-------------------------:|:-------------------------:|:-------------------------:
@@ -45,7 +45,7 @@ Admin Page (Light Theme)         |  Admin Page (Dark Theme)   |  Predict Page
 6. Move the file to the `model/` folder in our application;
 7. Enter these commands in the console:
 
-	```console
+    ```shell
     >> python manage.py makemigrations
     >> python manage.py migrate
     >> python manage.py createsuperuser
