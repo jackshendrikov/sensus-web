@@ -141,5 +141,5 @@ dmypy.json
 # Media Dirs
 media/
 
-# Large Word2Vect]
+# Large Word2Vec Model
 model/model-word2vec-300d.txt
