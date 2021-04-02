@@ -91,6 +91,6 @@ class Sentence(models.Model):
         data = np.reshape(data, (1, 100, 300))
 
         with graph.as_default():
-            model = load_model("model/LSTM-CNN-MODEL.h5")  # load model
+            model = load_model("model/LSTM-CNN-Model.h5")  # load model
             print(model.predict(np.array(data)))
             return model.predict(np.array(data))

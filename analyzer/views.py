@@ -38,14 +38,20 @@ def upload(request):
     return render(request, 'analyzer/upload.html', context)
 
 
+VALID = []
+
+
 def prediction(request):
     text = request.POST.get('Text', False)
-    sent = Sentence(str(text))
-    predict = sent.prediction()
 
-    print(str(text))
+    if text != False:
+        sent = Sentence(str(text))
+        predict = sent.prediction()
+        VALID.append(predict)
+    else:
+        predict = VALID[-1]
 
     print("Prediction is :", float(predict))
-    context = {'prediction':  round(float(predict), 2) * 100, 'sent': sent}
+    context = {'prediction':  round(float(predict), 2) * 100, 'sent': str(text)}
 
     return render(request, 'analyzer/predict.html', context)
