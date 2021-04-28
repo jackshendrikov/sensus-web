@@ -9,8 +9,15 @@ def home(request):
     # Load documents for the list page
     documents = Document.objects.all()
 
+    lang = request.session['lang'] = 'ua'
+
+    # someone clicks the link to change to English
+    def switch_to_en(request):
+        lang = request.session['lang'] = 'en'
+        return lang
+
     # Render list page with the documents and the form
-    context = {'documents': documents}
+    context = {'documents': documents, 'lang': lang}
     return render(request, 'analyzer/home.html', context)
 
 

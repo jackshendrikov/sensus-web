@@ -44,7 +44,7 @@
 
     <div class="card" style="width: 80%;">
         <div class="item-text" style="color: var(--main-color); font-size: 24px; font-weight: bold;">
-            Upload Documents
+            Завантажити Документи
         </div>
 
         <div class="card-body">
@@ -53,7 +53,7 @@
                 <p>{{ form.non_field_errors }}</p>
                 <div class="upload" style="color: var(--app-container); text-align:center;">
                     <input type="file" class="form-control" name="docfile" accept=".txt" style="height: 100%;">
-                    <button type="submit" class="btn btn-primary mt-4" style="width: 150px;">Upload</button>
+                    <button type="submit" class="btn btn-primary mt-4" style="width: 150px;">Завантажити</button>
                 </div>
                 {{ message }}
             </form>
@@ -69,7 +69,7 @@
 {% endfor %}
 {% endif %}
 
-<span class="footer-title">{% now "Y" %}</span>
+<span class="footer-title" style="font-size: 16px;">Sentimento, {% now "Y" %}</span>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

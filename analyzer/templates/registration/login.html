@@ -32,7 +32,7 @@
 
     <div class="alert alert-danger" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <strong>Your username and password didn't match.</strong> Please try again.
+        <strong>Ваше ім’я користувача та пароль не збігаються.</strong> Повторіть спробу.
     </div>
 {% endif %}
 
@@ -40,40 +40,40 @@
   {% if user.is_authenticated %}
       <div class="alert alert-warning" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Your account doesn't have access to this page.</strong>
-          To proceed, please login with an account that has access.
+          <strong>Ваш обліковий запис не має доступу до цієї сторінки.</strong>
+          Щоб продовжити, увійдіть, використовуючи обліковий запис, який має доступ.
       </div>
   {% else %}
       <div class="alert alert-info" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <strong>Please login to see this site.</strong>
+          <strong>Будь ласка, увійдіть, щоб переглянути цей сайт.</strong>
       </div>
   {% endif %}
 {% endif %}
 
 <div class="content">
-    <h2>Login</h2>
+    <h2>Авторизація</h2>
     <form id="myform" method="post" action="{% url 'login' %}">
         {% csrf_token %}
         <div class="field">
             <span class="fas fa-user"></span>
             {{ form.username }}
-            <label>Username</label>
+            <label>Логін</label>
         </div>
         <div class="field" style="margin: 10px 0;">
             <span class="fas fa-lock"></span>
             {{ form.password }}
-            <label>Password</label>
+            <label>Пароль</label>
         </div>
-        <div class="forgot-pass"><a href="{% url 'password_reset' %}" id="lost">Lost password?</a></div>
+        <div class="forgot-pass"><a href="{% url 'password_reset' %}" id="lost">Втратили пароль?</a></div>
         <button class="submit-btn" onclick="document.getElementById('myform').submit()">
-            Login Locally
+            Авторизуватись Локально
             <input type="hidden" name="next" value="{{ next }}" />
         </button>
 </form>
 </div>
 
-<span class="footer-title">{% now "Y" %}</span>
+<span class="footer-title">Sentimento, {% now "Y" %}</span>
 
 <script src='{% static "home/js/font-awesome-kit.js" %}'></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
