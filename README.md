@@ -27,17 +27,6 @@ This site was designed for sentiment analysis of text documents on Ukrainian lan
 - **pymorphy2** (`v0.9+`)
 - **psycopg2** (`v2.8.6`)
 
-
-## 📷 &nbsp;App Screenshots
-
-Login Page         |  Upload Page (Light Theme) |  Upload Page (Dark Theme)
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="img/login.png" title="Login Page" width="100%"> |<img src="img/upload_light.png" title="Upload Page (Light Theme)" width="100%"> |<img src="img/upload_dark.png" title="Upload Page (Dark Theme)" width="100%">
-
-Admin Page (Light Theme)         |  Admin Page (Dark Theme)   |  Predict Page
-:-------------------------:|:-------------------------:|:-------------------------:
-<img src="img/header.png" title="Admin Page (Light Theme) " width="100%"> |<img src="img/home_dark.png" title="Admin Page (Dark Theme)" width="100%"> |<img src="img/predict.png" title="Predict Page" width="100%">
-
 ## 🚀 &nbsp;How to Run
 
 1. Clone this repository;
@@ -78,6 +67,21 @@ The models for sentiment analysis that were used in this project were created ea
 | Mobile-friendly                      |        ✔️       |
 | Ability to add any popular text file formats (`.pdf`, `.doc`, `.odt`)                                                                   |        ❌       |
 
+
+## 📷 &nbsp;App Screenshots
+
+Login Page         |  Upload Page (Light Theme) |  Upload Page (Dark Theme)
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="img/login.png" title="Login Page" width="100%"> |<img src="img/upload_light.png" title="Upload Page (Light Theme)" width="100%"> |<img src="img/upload_dark.png" title="Upload Page (Dark Theme)" width="100%">
+
+Admin Page (Light Theme)         |  Admin Page (Dark Theme)   |  Predict Page
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="img/header.png" title="Admin Page (Light Theme) " width="100%"> |<img src="img/home_dark.png" title="Admin Page (Dark Theme)" width="100%"> |<img src="img/predict.png" title="Predict Page" width="100%">
+
+
+## 🎥 &nbsp;How It Works</h2>
+
+[![Watch the video](https://i.imgur.com/MZTmRzh.png)](https://drive.google.com/file/d/10ezfhr4W4qnZNNKAV017fTf_2tJ43C1E/view)
 
 
 ## 📫 &nbsp;Get in touch
