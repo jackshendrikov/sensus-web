@@ -57,8 +57,34 @@
                 </div>
                 {{ message }}
             </form>
+
         </div>
-</div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <span style="text-align: center;">
+        <form action="{% url "home_page" %}" method="post" enctype="multipart/form-data" style="display: inline-block; margin: 0 10px;">
+            {% csrf_token %}
+            <div class="upload" style="color: var(--app-container); text-align:center;">
+                <button type="submit" class="btn btn-primary mt-4" style="width: 300px;">Перейти на Головну (Адмін)</button>
+            </div>
+        </form>
+
+        <form action="{% url "logout" %}" method="post" enctype="multipart/form-data" style="display: inline-block;">
+            {% csrf_token %}
+            <div class="upload" style="color: var(--app-container); text-align:center;">
+                <button type="submit" class="btn btn-primary mt-4" style="width: 200px;">Вийти з акаунту</button>
+            </div>
+        </form>
+    </span>
+    {% else %}
+    <form action="{% url "login" %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="upload" style="color: var(--app-container); text-align:center;">
+            <button type="submit" class="btn btn-primary mt-4" style="width: 200px;">Увійти до акаунту</button>
+        </div>
+    </form>
+    {% endif %}
 
 {% if messages %}
 {% for message in messages %}

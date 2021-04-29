@@ -9,15 +9,8 @@ def home(request):
     # Load documents for the list page
     documents = Document.objects.all()
 
-    lang = request.session['lang'] = 'ua'
-
-    # someone clicks the link to change to English
-    def switch_to_en(request):
-        lang = request.session['lang'] = 'en'
-        return lang
-
     # Render list page with the documents and the form
-    context = {'documents': documents, 'lang': lang}
+    context = {'documents': documents}
     return render(request, 'analyzer/home.html', context)
 
 
@@ -28,12 +21,12 @@ def upload(request):
         if form.is_valid():
             newdoc = Document(docfile=request.FILES['docfile'])
             newdoc.save()
-            messages.success(request, "Your data has been saved!")
+            messages.success(request, "Ваш документ було збережено!")
 
             # Redirect to the document list after POST
             return redirect('upload')
         else:
-            messages.error(request, "Error! Try one more time...")
+            messages.error(request, "Помилка! Спробуйте ще раз...")
     else:
         form = DocumentForm()  # An empty, unbound form
 
