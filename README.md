@@ -11,18 +11,21 @@ This site was designed for sentiment analysis of text documents on Ukrainian lan
 ## 📝 &nbsp;Requirements
 
 - **Django** (`v3.1+`)
-- **Python** (`v3.7+`)
-- **Keras** (`v2.4+`)
-- **Gensim** (`v3.8+`)
+- **Python** (`v3.7.10+`)
+- **Keras** (`v2.4.3`)
+- **Gensim** (`v3.8.3`)
 - **Gunicorn** (`v19.6+`)
-- **h5py** (`v2.7+`)
+- **tensorflow-cpu** (`v2.1.0`)
+- **h5py** (`v2.10.0`)
 - **html5lib** (`v1.0.1+`)
-- **NumPy** (`v1.19.5+`)
-- **NLTK** (`v3.5+`)
+- **NumPy** (`v1.19.5`)
+- **NLTK** (`v3.5`)
+- **bleach** (`v3.0.2`)
+- **django-heroku** (`v0.3.1`)
 - **python-decouple** (`v3.4+`)
 - **pymorphy2-dicts-uk** (`v2.4.1+`)
 - **pymorphy2** (`v0.9+`)
-- **Tensorflow** (`v2.1+`)
+- **psycopg2** (`v2.8.6`)
 
 
 ## 📷 &nbsp;App Screenshots
@@ -38,7 +41,10 @@ Admin Page (Light Theme)         |  Admin Page (Dark Theme)   |  Predict Page
 ## 🚀 &nbsp;How to Run
 
 1. Clone this repository;
-2. Make sure that you have all the above requirements;
+2. Make sure that you have all the above requirements or do the following:
+	1. cd to the directory where requirements.txt is located;
+	2. activate your virtualenv;
+	3. run: `pip install -r requirements.txt` in your shell.
 3. Download [Word2Vec](https://lang.org.ua/static/downloads/models/ubercorpus.lowercased.lemmatized.word2vec.300d.bz2) model (300Mb) with a corpus of word-vectors;
 4. Unzip the `bz2` archive (~1Gb), for example using [this](https://www.winzip.com/win/en/bz2-file.html) application);
 5. Rename the file to `model-word2vec-300d.txt`;
