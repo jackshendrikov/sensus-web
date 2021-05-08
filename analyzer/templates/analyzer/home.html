@@ -27,7 +27,7 @@
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                 </svg>
             </span>
-            <p class="app-name" style="margin: 0 32px 0 20px;">Sensus Web</p>
+            <p class="app-name" style="margin: 0 32px 0 20px;">Sensus</p>
             <div class="search-wrapper">
                 <input class="search-input" type="text" placeholder="Пошук">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-search" viewBox="0 0 24 24">
@@ -141,9 +141,13 @@
                 <div class="project-box-wrapper">
                     <div class="project-box" style="background-color: #a0e989;">
                         <div class="project-box-header" style="margin: 0;">
-                            <a href="{{ document.docfile.url }}" download>
-                                <i class="fa fa-download" style="color: #4caf50; font-size: 1.7em;"></i>
+                            <a href="{{ document.docfile.url }}">
+                                <i class="fa fa-eye" style="color: #3f51b5; font-size: 1.7em;"></i>
                             </a>
+                            
+                             <a href="{{ document.docfile.url }}" download class="app-sidebar-link">
+                                 <i class="fa fa-download" style="color: #4caf50; font-size: 1.7em;"></i>
+                             </a>
                         </div>
 
                         <div class="project-box-content-header">
@@ -152,7 +156,7 @@
                         </div>
 
                         <div class="box-progress-wrapper" style="text-align: center;">
-                            <button title="Analyze Document" class="btn btn-success" style="width: 250px;" onclick="processData('{{ document.docfile.url }}')">
+                            <button title="Analyze Document" class="btn btn-success" style="width: 250px;" onclick="processData('{{ document.docfile }}')">
                                 Аналізувати Документ &nbsp;<i class="fa fa-play-circle" style="font-size: 1.25em;"></i>
                             </button>
                         </div>
@@ -187,38 +191,33 @@
  }
 
     function processData(link) {
-        jQuery.get(link, function(data) {
-            let Text = data;
-            console.log(Text);
+        let newDiv = document.createElement("div");
+        newDiv.className = "alert alert-success";
+        newDiv.role = "alert";
+        newDiv.innerHTML = "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+            "Зачекайте хвилинку... Модель аналізує ваш текст";
 
-            let newDiv = document.createElement("div");
-            newDiv.className = "alert alert-success";
-            newDiv.role = "alert";
-            newDiv.innerHTML = "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-                "Зачекайте хвилинку... Модель аналізує ваш текст";
+        $("#container").before(newDiv);
 
-            $("#container").before(newDiv);
+        $.ajax({
+            headers: { "X-CSRFToken": getCookie("csrftoken") },
+            type: "POST",
+            url: '/predict/',
+            data: {Link: link},
 
-            $.ajax({
-                headers: { "X-CSRFToken": getCookie("csrftoken") },
-                type: "POST",
-                url: '/predict/',
-                data: {Text: Text},
+            success: function() {
+                window.location = "{% url 'prediction' %}";
+            },
 
-                success: function() {
-                    window.location = "{% url 'prediction' %}";
-                },
+            error: function () {
+                let newDiv = document.createElement("div");
+                newDiv.className = "alert alert-danger";
+                newDiv.role = "alert";
+                newDiv.innerHTML = "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
+                    "Під час спроби передбачити результат сталася помилка...";
 
-                error: function () {
-                    let newDiv = document.createElement("div");
-                    newDiv.className = "alert alert-danger";
-                    newDiv.role = "alert";
-                    newDiv.innerHTML = "<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button>\n" +
-                        "Під час спроби передбачити результат сталася помилка...";
-
-                    $("#container").before(newDiv);
-                }
-            });
+                $("#container").before(newDiv);
+            }
         });
     }
 </script>

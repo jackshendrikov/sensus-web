@@ -92,5 +92,6 @@ class Sentence(models.Model):
 
         with graph.as_default():
             model = load_model("model/LSTM-CNN-Model.h5")  # load model
-            print(model.predict(np.array(data)))
-            return model.predict(np.array(data))
+            predict = model.predict(np.array(data))
+            print(predict, '\n', model.summary())
+            return predict

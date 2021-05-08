@@ -21,7 +21,7 @@
                     <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
                 </svg>
             </span>
-            <p class="app-name">Sensus Web</p>
+            <p class="app-name">Sensus</p>
         </div>
 
 
@@ -52,7 +52,7 @@
                 {% csrf_token %}
                 <p>{{ form.non_field_errors }}</p>
                 <div class="upload" style="color: var(--app-container); text-align:center;">
-                    <input type="file" class="form-control" name="docfile" accept=".txt" style="height: 100%;">
+                    <input type="file" class="form-control" name="docfile" accept=".pdf" style="height: 100%;">
                     <button type="submit" class="btn btn-primary mt-4" style="width: 150px;">Завантажити</button>
                 </div>
                 {{ message }}
@@ -95,7 +95,7 @@
 {% endfor %}
 {% endif %}
 
-<span class="footer-title" style="font-size: 16px;">Sensus, {% now "Y" %}</span>
+<span class="footer-title" style="font-size: 16px;">{% now "Y" %}</span>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {

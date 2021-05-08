@@ -3,6 +3,13 @@ from django.contrib import messages
 from analyzer.models import Sentence
 from analyzer.models import Document
 from analyzer.forms import DocumentForm
+from sensus.settings import MEDIA_ROOT
+
+from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
+from pdfminer.converter import TextConverter
+from pdfminer.layout import LAParams
+from pdfminer.pdfpage import PDFPage
+from io import StringIO
 
 
 def home(request):
@@ -38,13 +45,34 @@ def upload(request):
     return render(request, 'analyzer/upload.html', context)
 
 
+def convert_pdf_to_txt(path):
+    rsrcmgr, retstr, laparams = PDFResourceManager(), StringIO(), LAParams()
+    device = TextConverter(rsrcmgr, retstr, laparams=laparams)
+
+    fp = open(path, 'rb')
+    interpreter = PDFPageInterpreter(rsrcmgr, device)
+    password, maxpages, caching, pagenos = "", 0, True, set()
+
+    for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password, caching=caching,
+                                  check_extractable=True):
+        interpreter.process_page(page)
+
+    text = retstr.getvalue()
+
+    fp.close()
+    device.close()
+    retstr.close()
+    return text
+
+
 VALID = []
 
 
 def prediction(request):
-    text = request.POST.get('Text', False)
+    link = request.POST.get('Link', False)
 
-    if text != False:
+    if link != False:
+        text = convert_pdf_to_txt(MEDIA_ROOT.replace('\\', '/') + '/' + link)
         sent = Sentence(str(text))
         predict = sent.prediction()
         VALID.append(predict)
@@ -52,6 +80,6 @@ def prediction(request):
         predict = VALID[-1]
 
     print("Prediction is :", float(predict))
-    context = {'prediction':  round(float(predict), 2) * 100, 'sent': str(text)}
+    context = {'prediction':  round(float(predict), 2) * 100}
 
     return render(request, 'analyzer/predict.html', context)
