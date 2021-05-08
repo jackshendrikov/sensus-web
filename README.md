@@ -1,4 +1,4 @@
-<h1 align="center">Sentimento Web</h1>
+<h1 align="center">Sensus Web</h1>
 
 <p align="center">
   <img src="img/header.png" alt="Admin Page" width="800">
@@ -52,7 +52,7 @@ This site was designed for sentiment analysis of text documents on Ukrainian lan
 
 ## 📋 &nbsp;Overview
 
-The models for sentiment analysis that were used in this project were created earlier in [this](https://github.com/JackShen1/sentimento) project, where in 3 parts the whole process of data preparation and training of our model was described, a comparative analysis of classifiers and different models was conducted.
+The models for sentiment analysis that were used in this project were created earlier in [this](https://github.com/JackShen1/sensus) project, where in 3 parts the whole process of data preparation and training of our model was described, a comparative analysis of classifiers and different models was conducted.
 
 
 
