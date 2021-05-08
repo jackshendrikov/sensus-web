@@ -1,1 +1,1 @@
-web: gunicorn sentimento.wsgi
+web: gunicorn sensus.wsgi

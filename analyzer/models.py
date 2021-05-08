@@ -6,7 +6,7 @@ from re import match
 from nltk.tokenize import RegexpTokenizer
 from tensorflow.keras.models import load_model
 
-from sentimento.settings import WordVec, graph
+from sensus.settings import WordVec, graph
 
 import pymorphy2
 import numpy as np
