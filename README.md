@@ -81,7 +81,7 @@ Admin Page (Light Theme)         |  Admin Page (Dark Theme)   |  Predict Page
 
 ## 🎥 &nbsp;How It Works</h2>
 
-[![Watch the video](https://i.imgur.com/MZTmRzh.png)](https://drive.google.com/file/d/10ezfhr4W4qnZNNKAV017fTf_2tJ43C1E/view)
+[![Watch the video](https://i.imgur.com/59iemoM.png)](https://drive.google.com/file/d/19VPcVV8DXSvWuecGyTYwar_G-FFlL_8Y/view)
 
 
 ## 📫 &nbsp;Get in touch
